@@ -42,7 +42,8 @@ let Url = mongoose.model('Url', urlSchema)
 let responseObject = {}
 let bodyParser = require('body-parser')
 app.post('api/shorturl/new', app.use(bodyParser.urlencoded({ extended: false })), (request, response) => {
-
+  let inputUrl = request.body['url']
+  responseObject['original_url'] = inputUrl
 
 response.json(responseObject)
 })
